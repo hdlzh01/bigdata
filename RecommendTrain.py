@@ -8,10 +8,13 @@ from pyspark.mllib.recommendation import ALS
 def SetPath(sc):
     """定义全局变量Path，配置文件读取"""
     global Path
+    '''
     if sc.master[0:5] == "local":   # 当前为本地路径，读取本地文件
         Path = "file:/home/yyf/pythonwork/PythonProject/"
     else:       # 不是本地路径，有可能是YARN Client或Spark Stand Alone必须读取HDFS文件
         Path = "hdfs://master:9000/user/yyf/ml-100k/"
+    '''    
+    Path = "hdfs://master:9000/user/yyf/ml-100k/"
 
 
 def CreateSparkContext():
