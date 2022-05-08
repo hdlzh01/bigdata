@@ -32,6 +32,10 @@ def PrepareData(sc):
     rawUserData = sc.textFile(Path + "u.data")
     rawRatings = rawUserData.map(lambda line: line.split("\t")[:3])
     ratingsRDD = rawRatings.map(lambda x: (x[0], x[1], x[2]))
+    numUser = ratingsRDD.map(lambda x:x[0]).distinct().count()
+    numMovie = ratingsRDD.map(lambda x:x[1]).distinct().count()
+    print("用户数目为："+str(numUser))
+    print("电影数目为："+str(numMovie))
     return ratingsRDD
 
 
